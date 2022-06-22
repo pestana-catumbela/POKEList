@@ -1,10 +1,15 @@
 import './App.css';
-import Body from './components/body';
+import Head from './components/head/head';
+import Body from './components/body/body';
 
 function App() {
   return (
     <>
-      <Body />
+      <main className="myMainElement">
+        <Head />
+
+        <Body />
+      </main>
     </>
   );
 }
