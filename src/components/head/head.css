@@ -1,6 +1,6 @@
 .myHeadElement{
     color: white;
     text-align: center;
-    background-color: #023430;
     padding: 20px 0px 20px 0px;
+    background: linear-gradient(#2C6BC3, #F3D831);
 }
