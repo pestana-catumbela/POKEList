@@ -1,0 +1,41 @@
+.sectionBodyElement{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.containerElement{
+    width: 80%;
+    margin: 30px 0px 30px 0px;
+}
+
+.p{
+    font-size: 20px;
+    padding: 15px 0px 15px 0px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px 20px 0px;
+}
+
+.btn1{
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #116149;
+    padding: 10px 15px 10px 15px;
+}
+
+.btn2{
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #116149;
+    padding: 10px 15px 10px 15px;
+}

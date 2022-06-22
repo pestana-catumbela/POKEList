@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Api from '../../services/api';
+import './body.css';
 
 export default class Body extends Component{
     state = {
@@ -25,7 +26,19 @@ export default class Body extends Component{
     render(){
         return(
             <>
-                <div>{this.state.pokeNames.map(nm => <p>{nm.name}</p>)}</div>
+                <section className="sectionBodyElement">
+                    <div className="containerElement">
+                        <strong>
+                            {this.state.pokeNames.map(nm => <p className="p">{nm.name}<hr></hr></p>)}
+                        </strong>
+
+                        <div className="btns">
+                            <button type="submit" className="btn1">Anterior</button>
+                            <span>Página 1 de 100</span>
+                            <button type="submit" className="btn2">Prosterior</button>
+                        </div>
+                    </div>
+                </section>
             </>
         )
     }
