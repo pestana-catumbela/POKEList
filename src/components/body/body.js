@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Api from '../../services/api';
+import Axios from 'axios';
 import './body.css';
 
 export default class Body extends Component{
@@ -11,7 +12,6 @@ export default class Body extends Component{
 
     componentDidMount(){
         this.buscPoke()
-        this.pageNext()
     }
 
     async buscPoke(){
@@ -21,14 +21,30 @@ export default class Body extends Component{
             // const anterior = {
             //     previous: res.data.previous
             // }
-            const seguinte = {
-                next: res.data.next
-            }
-            this.setState({pokeNames, seguinte})
+            // const seguinte = {
+            //     next: res.data.next
+            // }
+            this.setState({pokeNames})
             console.log(this.state.pokeNames)
         }
         catch{
             console.log("Erro!...")
+        }
+    }
+
+    async buscPoke1(){
+        try{
+            const url = Axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20`)
+            // const anterior = {
+            //     previous: res.data.previous
+            // }
+            const seguinte = {
+                next: url.data.next
+            }
+            this.setState({seguinte})
+        }
+        catch{
+            console.log("Erro!")
         }
     }
 
@@ -41,14 +57,15 @@ export default class Body extends Component{
 
     pageNext = () => {
         try{
-            const {seguinte} = this.state;
+            const {seguinte} = this.state
             if(seguinte.next !== null){
-                const pagePrevious = seguinte.next
-                this.buscPoke(pagePrevious);
+                const pageNext = seguinte.next
+                this.buscPoke1(pageNext)
+                console.log(pageNext)
             }
         }
         catch{
-            console.log('Erro...')
+            console.log('Erro')
         }
         // if(seguinte !== null){
         //     const pageNext = seguinte
