@@ -43,8 +43,10 @@ export default class Body extends Component{
 
         if(newUrl !== null){
             const response = Axios.get(newUrl)
-            const pn = response
-            console.log(pn)
+            const pageNext = response
+            pageNext.then(pn => {
+                console.log(pn.data.results)
+            })
         }
     }
 
