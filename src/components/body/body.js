@@ -7,6 +7,7 @@ export default class Body extends Component{
     state = {
         pokeNames: [ ],
         // anterior: { },
+        newUrl: { },
         seguinte: { }
     }
 
@@ -21,30 +22,12 @@ export default class Body extends Component{
             // const anterior = {
             //     previous: res.data.previous
             // }
-            // const seguinte = {
-            //     next: res.data.next
-            // }
-            this.setState({pokeNames})
+            const newUrl = res.data.next
+            this.setState({pokeNames, newUrl})
             console.log(this.state.pokeNames)
         }
         catch{
             console.log("Erro!...")
-        }
-    }
-
-    async buscPoke1(){
-        try{
-            const url = Axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20`)
-            // const anterior = {
-            //     previous: res.data.previous
-            // }
-            const seguinte = {
-                next: url.data.next
-            }
-            this.setState({seguinte})
-        }
-        catch{
-            console.log("Erro!")
         }
     }
 
@@ -56,21 +39,13 @@ export default class Body extends Component{
     // }
 
     pageNext = () => {
-        try{
-            const {seguinte} = this.state
-            if(seguinte.next !== null){
-                const pageNext = seguinte.next
-                this.buscPoke1(pageNext)
-                console.log(pageNext)
-            }
+        const {newUrl} = this.state
+
+        if(newUrl !== null){
+            const response = Axios.get(newUrl)
+            const pn = response
+            console.log(pn)
         }
-        catch{
-            console.log('Erro')
-        }
-        // if(seguinte !== null){
-        //     const pageNext = seguinte
-        //     console.log(pageNext)
-        // }
     }
 
     render(){
