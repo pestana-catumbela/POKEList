@@ -7,7 +7,6 @@ export default class Body extends Component{
     state = {
         pokeNames: [ ],
         // anterior: { },
-        newUrl: { },
         seguinte: { }
     }
 
@@ -23,7 +22,9 @@ export default class Body extends Component{
             //     previous: res.data.previous
             // }
             const newUrl = res.data.next
-            this.setState({pokeNames, newUrl})
+            const response = Axios.get(newUrl)
+            const seguinte = response
+            this.setState({pokeNames, seguinte})
             console.log(this.state.pokeNames)
         }
         catch{
@@ -39,12 +40,10 @@ export default class Body extends Component{
     // }
 
     pageNext = () => {
-        const {newUrl} = this.state
+        const {seguinte} = this.state
 
-        if(newUrl !== null){
-            const response = Axios.get(newUrl)
-            const pageNext = response
-            pageNext.then(pn => {
+        if(seguinte !== null){
+            seguinte.then(pn => {
                 console.log(pn.data.results)
             })
         }
